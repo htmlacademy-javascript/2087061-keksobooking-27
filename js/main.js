@@ -1,27 +1,23 @@
 // 1 функция
 
-/* Вариант с гугла (https://learn.javascript.ru/task/random-int-min-max)
-function randomInteger(min, max) {
-  let rand = min - 0.5 + Math.random() * (max - min + 1); Не понимаю почему рандомное число из диапозона берется так, а не как у меня.
-  return Math.round(rand);
-
-alert( randomInteger(1, 3) );
-}
-*/
-
-/* Мой вариант
+/* Мой вариант (https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random)*/
 function randomInteger(from, to) {
-  return Math.floor(Math.round(Math.random(from, to)));
+  from = Math.ceil(from);
+  to = Math.ceil(to);
+  return Math.floor(Math.random() * (to - from + 1)) + from;
 }
 
-randomInteger(10, 20);
-*/
+randomInteger();
 
 // 2 функция
 
-/* Вариант с гугла, свой вариант не понимаю как сделать(тот же вопрос что и в 1 варианте)
-function getRandomFloat(min, max) {
-  return Math.random() * (max - min) + min;
+function randomFloat(from, to, after = 0) {
+  from = Math.ceil(from);
+  to = Math.ceil(to);
+  const digitsDegree = 10 ** after;
+  return ~~((Math.random() * (to - from + 1) + from) * digitsDegree) / digitsDegree;
 }
-getRandomFloat(11, 101);
-*/
+
+// Для чего нужны ~~ перед скобкой?
+
+randomFloat();
