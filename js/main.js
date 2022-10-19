@@ -66,15 +66,16 @@ function getPhotos() {
   return array;
 }
 
-// function getAvatar() {
-//   const avatarNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   for (let i = 0; i < avatarNumber.length; i++) {
-//     const linkAvatar = `img/avatars/user${avatarNumber[i]}.png`;
-//     if (i < 10 && i > 0) {
-//       i.padStart(2, '0'); //Не понимаю почему показывает ошибку is not a function
-//     }
-//   }
-// }
+function getAvatar() {
+  for (let i = 0; i < 11; i++) {
+    const linkAvatar = `img/avatars/user${i}.png`;
+    if (i < 10 && i > 0) {
+      i.toString().padStart(2, '0');
+    }
+  }
+}
+
+getAvatar();
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
@@ -89,11 +90,11 @@ const createAd = () => {
 
   return {
     author: {
-      avatar: ''//getAvatar(),
+      avatar: getAvatar(),
     },
     offer: {
       title: 'Заголовок',
-      address: '', // Как можно обратиться к объекту location из этого объекта
+      address: randomLat + randomLng, // Как можно обратиться к объекту location из этого объекта
       price: randomPrice,
       type: randomType,
       rooms: randomRooms,
