@@ -1,3 +1,12 @@
+const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+const time = ['12:00', '13:00', '14:00'];
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const photos = [
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'
+];
+
 const getRandomPositiveInteger = (a, b) => {
   if (a < 0 || b < 0) {
     return NaN;
@@ -9,52 +18,97 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-getRandomPositiveInteger(0, 5);
+function getRandomPositiveFloat (a, b, digits = 1) {
+  if (a < 0 || b < 0 || digits < 0) {
+    return NaN;
+  }
 
-// function getRandomPositiveFloat (a, b, digits = 1) {
-//   if (a < 0 || b < 0 || digits < 0) {
-//     return NaN;
+  const lower = Math.min(a, b);
+  const upper = Math.max(a, b);
+
+  // Дальше используем Math.random() для получения случайного дробного числа в диапазоне [0, 1),
+  // которое домножаем на разницу между переданными числами - это будет наша случайная дельта.
+  // После нужно сложить дельту с минимальным значением, чтобы получить итоговое случайное число.
+  const result = Math.random() * (upper - lower) + lower;
+
+  return +result.toFixed(digits);
+}
+
+function getFeatures() {
+  const maxLength = features.length;
+  const lengthOfArray = getRandomPositiveInteger(1, maxLength);
+  const array = [];
+
+  while (array.length < lengthOfArray) {
+    const indexOfEl = getRandomPositiveInteger(0, maxLength - 1);
+    const el = features[indexOfEl];
+
+    if (!array.includes(el)) {
+      array.push(el);
+    }
+  }
+  return array;
+} // Функция из гугла, но я постарался максимально разобраться в ней
+
+function getPhotos() {
+  const maxLength = photos.length;
+  const lengthOfArray = getRandomPositiveInteger(1, maxLength);
+  const array = [];
+
+  while (array.length < lengthOfArray) {
+    const indexOfEl = getRandomPositiveInteger(0, maxLength - 1);
+    const el = features[indexOfEl];
+
+    if (!array.includes(el)) {
+      array.push(el);
+    }
+  }
+  return array;
+}
+
+// function getAvatar() {
+//   const avatarNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//   for (let i = 0; i < avatarNumber.length; i++) {
+//     const linkAvatar = `img/avatars/user${avatarNumber[i]}.png`;
+//     if (i < 10 && i > 0) {
+//       i.padStart(2, '0'); //Не понимаю почему показывает ошибку is not a function
+//     }
 //   }
-
-//   const lower = Math.min(a, b);
-//   const upper = Math.max(a, b);
-
-//   // Дальше используем Math.random() для получения случайного дробного числа в диапазоне [0, 1),
-//   // которое домножаем на разницу между переданными числами - это будет наша случайная дельта.
-//   // После нужно сложить дельту с минимальным значением, чтобы получить итоговое случайное число.
-//   const result = Math.random() * (upper - lower) + lower;
-
-//   return +result.toFixed(digits);
 // }
 
-// const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-// const checkin = ['12:00', '13:00', '14:00'];
-// const checkout = ['12:00', '13:00', '14:00'];
-// const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-// const author = {
-//   avatar: '',
-// };
+const createAd = () => {
+  const randomPrice = getRandomPositiveInteger(0, 20000);
+  const randomType = getRandomArrayElement(type);
+  const randomRooms = getRandomPositiveInteger(0, 100);
+  const randomGuests = getRandomPositiveInteger(0, 20);
+  const randomTime = getRandomArrayElement(time);
+  const randomLat = getRandomPositiveFloat(35.65000, 35.70000, 5);
+  const randomLng = getRandomPositiveFloat(139.70000, 139.80000, 5);
 
-// const offer = {
-//   title: '',
-//   address: '',
-//   price: '',
-//   type: type,
-//   rooms: '',
-//   guests: '',
-//   checkin: '',
-//   checkout: '',
-//   features: '',
-//   description: '',
-//   photos: '',
-// };
+  return {
+    author: {
+      avatar: ''//getAvatar(),
+    },
+    offer: {
+      title: 'Заголовок',
+      address: '', // Как можно обратиться к объекту location из этого объекта
+      price: randomPrice,
+      type: randomType,
+      rooms: randomRooms,
+      guests: randomGuests,
+      checkin: randomTime,
+      checkout: randomTime,
+      features: getFeatures(),
+      description: 'Описание',
+      photos: getPhotos(),
+    },
+    location: {
+      lat: randomLat,
+      lng: randomLng,
+    },
+  };
+};
 
-// // const location = {
-// //   lat: '',
-// //   lng: ''
-// // };
-
-// // const createAd = () => {
-// //   return
-// // }
+createAd();
