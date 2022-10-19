@@ -94,7 +94,7 @@ const createAd = () => {
     },
     offer: {
       title: 'Заголовок',
-      address: randomLat + randomLng, // Как можно обратиться к объекту location из этого объекта
+      address: randomLat + randomLng,
       price: randomPrice,
       type: randomType,
       rooms: randomRooms,
