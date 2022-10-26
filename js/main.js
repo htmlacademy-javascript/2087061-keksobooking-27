@@ -66,13 +66,10 @@ function getPhotos() {
   return array;
 }
 
-function getAvatar() {
-  for (let i = 0; i < 11; i++) {
-    const linkAvatar = `img/avatars/user${i}.png`;
-    if (i < 10 && i > 0) {
-      i.toString().padStart(2, '0');
-    }
-  }
+function getAvatar(id) {
+  const numberPhoto = id.toString().padStart(2, '0');
+  const linkAvatar = `img/avatars/user${numberPhoto}.png`;
+  return linkAvatar;
 }
 
 getAvatar();
