@@ -66,7 +66,7 @@ function getPhotos() {
   return array;
 }
 
-function getAvatar(id) {
+function getAvatar (id) {
   const numberPhoto = id.toString().padStart(2, '0');
   const linkAvatar = `img/avatars/user${numberPhoto}.png`;
   return linkAvatar;
@@ -85,7 +85,7 @@ const createAd = (id) => {
 
   return {
     author: {
-      avatar: getAvatar(),
+      avatar: getAvatar(id),
     },
     offer: {
       title: 'Заголовок',
