@@ -72,11 +72,9 @@ function getAvatar(id) {
   return linkAvatar;
 }
 
-getAvatar();
-
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const createAd = () => {
+const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
   const randomType = getRandomArrayElement(type);
   const randomRooms = getRandomPositiveInteger(0, 100);
@@ -110,4 +108,3 @@ const createAd = () => {
 };
 
 createAd();
-
