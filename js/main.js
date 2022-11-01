@@ -1,23 +1,38 @@
-// 1 функция
+import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement} from './get-random-number.js';
+import {getAvatar, getFeatures, getPhotos} from './get-element.js';
+import {type, time} from './util.js';
 
-/* Мой вариант (https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random)*/
-function randomInteger(from, to) {
-  from = Math.ceil(from);
-  to = Math.ceil(to);
-  return Math.floor(Math.random() * (to - from + 1)) + from;
-}
+const createAd = (id) => {
+  const randomPrice = getRandomPositiveInteger(0, 20000);
+  const randomType = getRandomArrayElement(type);
+  const randomRooms = getRandomPositiveInteger(0, 100);
+  const randomGuests = getRandomPositiveInteger(0, 20);
+  const randomTime = getRandomArrayElement(time);
+  const randomLat = getRandomPositiveFloat(35.65000, 35.70000, 5);
+  const randomLng = getRandomPositiveFloat(139.70000, 139.80000, 5);
 
-randomInteger();
+  return {
+    author: {
+      avatar: getAvatar(id),
+    },
+    offer: {
+      title: 'Заголовок',
+      address: randomLat + randomLng,
+      price: randomPrice,
+      type: randomType,
+      rooms: randomRooms,
+      guests: randomGuests,
+      checkin: randomTime,
+      checkout: randomTime,
+      features: getFeatures(),
+      description: 'Описание',
+      photos: getPhotos(),
+    },
+    location: {
+      lat: randomLat,
+      lng: randomLng,
+    },
+  };
+};
 
-// 2 функция
-
-function randomFloat(from, to, after = 0) {
-  from = Math.ceil(from);
-  to = Math.ceil(to);
-  const digitsDegree = 10 ** after;
-  return ~~((Math.random() * (to - from + 1) + from) * digitsDegree) / digitsDegree;
-}
-
-// Для чего нужны ~~ перед скобкой?
-
-randomFloat();
+createAd();
