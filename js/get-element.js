@@ -1,6 +1,6 @@
 import {features} from './util.js';
 import {photos} from './util.js';
-import {getRandomPositiveInteger} from './get-random-number';
+import {getRandomPositiveInteger} from './get-random-number.js';
 
 export function getFeatures() {
   const maxLength = features.length;
@@ -25,7 +25,7 @@ export function getPhotos() {
 
   while (array.length < lengthOfArray) {
     const indexOfEl = getRandomPositiveInteger(0, maxLength - 1);
-    const el = features[indexOfEl];
+    const el = photos[indexOfEl];
 
     if (!array.includes(el)) {
       array.push(el);
@@ -34,8 +34,10 @@ export function getPhotos() {
   return array;
 }
 
-export function getAvatar (id) {
-  const numberPhoto = id.toString().padStart(2, '0');
-  const linkAvatar = `img/avatars/user${numberPhoto}.png`;
+export function getAvatar(id) {
+  const numberPhoto = id.toString();
+  numberPhoto.padStart(2, '0');
+  const linkAvatar = `img/avatars/user${numberPhoto + 1}.png`;
+
   return linkAvatar;
 }
