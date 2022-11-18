@@ -21,12 +21,12 @@ export const renderTemplate = function () {
     cardArray.push(createAd(i));
     cardElement.querySelector('.popup__title').textContent = cardArray[i].offer.title;
     cardElement.querySelector('.popup__text--address').textContent = cardArray[i].offer.address;
-    cardElement.querySelector('.popup__text--price').textContent = `${cardArray[i].offer.price}` + '₽/ночь';
+    cardElement.querySelector('.popup__text--price').textContent = `${cardArray[i].offer.price} ₽/ночь`;
     cardElement.querySelector('.popup__type').textContent = cardType[cardArray[i].offer.type];
-    cardElement.querySelector('.popup__text--capacity').textContent = `${cardArray[i].offer.rooms}` + ' комнаты для ' + `${cardArray[i].offer.guests}` + ' гостей';
-    cardElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + `${cardArray[i].offer.checkin}` + ', выезд до ' + `${cardArray[i].offer.checkout}`;
+    cardElement.querySelector('.popup__text--capacity').textContent = `${cardArray[i].offer.rooms} комнаты для ${cardArray[i].offer.guests} гостей`;
+    cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${cardArray[i].offer.checkin}, выезд до ${cardArray[i].offer.checkout}`;
     features.forEach((feature) => {
-      const featureListItem = cardElement.querySelector('.popup__feature--' + feature);
+      const featureListItem = cardElement.querySelector(`.popup__feature--${feature}`);
       if (!cardArray[i].offer.features.includes(feature)) {
         featureListItem.style.display = 'none';
       }
