@@ -15,7 +15,7 @@ const cardType = {
 };
 
 export const renderTemplate = function () {
-  let cardArray = [];
+  const cardArray = [];
 
   for (let i = 0; i < 1; i++) {
     cardArray.push(createAd(i));
@@ -25,10 +25,8 @@ export const renderTemplate = function () {
     cardElement.querySelector('.popup__type').textContent = cardType[cardArray[i].offer.type];
     cardElement.querySelector('.popup__text--capacity').textContent = `${cardArray[i].offer.rooms}` + ' комнаты для ' + `${cardArray[i].offer.guests}` + ' гостей';
     cardElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + `${cardArray[i].offer.checkin}` + ', выезд до ' + `${cardArray[i].offer.checkout}`;
-    
-    const cardFeatures = cardElement.querySelectorAll('.popup__feature');
     features.forEach((feature) => {
-      const featureListItem = cardElement.querySelector('.popup__feature--' + feature)
+      const featureListItem = cardElement.querySelector('.popup__feature--' + feature);
       if (!cardArray[i].offer.features.includes(feature)) {
         featureListItem.style.display = 'none';
       }
@@ -43,11 +41,9 @@ export const renderTemplate = function () {
       cardPhotoItem.height = '40';
       cardPhotoItem.src = photos[k];
       cardPhotos.appendChild(cardPhotoItem);
-    };
-    
+    }
     cardElement.querySelector('.popup__avatar').src = cardArray[i].author.avatar;
     fragment.appendChild(cardElement);
-  };
-  console.log(cardArray);
+  }
   map.appendChild(fragment);
 };
