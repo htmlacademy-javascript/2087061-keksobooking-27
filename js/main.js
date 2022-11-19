@@ -1,8 +1,9 @@
 import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement} from './get-random-number.js';
 import {getAvatar, getFeatures, getPhotos} from './get-element.js';
 import {type, time} from './util.js';
+import {renderTemplate} from './generate.js';
 
-const createAd = (id) => {
+export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
   const randomType = getRandomArrayElement(type);
   const randomRooms = getRandomPositiveInteger(0, 100);
@@ -13,11 +14,11 @@ const createAd = (id) => {
 
   return {
     author: {
-      avatar: getAvatar(id),
+      avatar: getAvatar(id + 1),
     },
     offer: {
       title: 'Заголовок',
-      address: randomLat + randomLng,
+      address: `${randomLat}, ${randomLng}`,
       price: randomPrice,
       type: randomType,
       rooms: randomRooms,
@@ -35,4 +36,4 @@ const createAd = (id) => {
   };
 };
 
-createAd();
+renderTemplate();
