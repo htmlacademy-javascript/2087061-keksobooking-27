@@ -21,8 +21,10 @@ pristine.addValidator(
 const rooms = form.querySelector('#room_number');
 const guests = form.querySelector('#capacity');
 const validateRooms = function () {
-  return (rooms.value === guests.value) || (rooms.value === 100 && guests.value === 0);
+  return ((rooms.value === guests.value) || (rooms.value === '100' && guests.value === '0')) || (rooms.value - guests.value === 1) || (rooms.value - guests.value === 2)
 };
+
+console.log(guests.value)
 
 pristine.addValidator(
   guests, () => (validateRooms()),
@@ -35,19 +37,19 @@ const price = form.querySelector('#price');
 pristine.addValidator(
   price, (value) => {
     if (type.value === 'bungalow') {
-      return price.value >= 1000;
+      return value >= 0;
     }
     if (type.value === 'flat') {
-      return price.value >= 1000;
+      return value >= 1000;
     }
     if (type.value === 'hotel') {
-      return price.value >= 3000;
+      return value >= 3000;
     }
     if (type.value === 'house') {
-      return price.value >= 5000;
+      return value >= 5000;
     }
     if (type.value === 'palace') {
-      return price.value >= 10000;
+      return value >= 10000;
     }
   },
   'Неверно указана цена'
