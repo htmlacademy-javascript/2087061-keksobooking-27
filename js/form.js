@@ -25,7 +25,9 @@ const validateRooms = function () {
 };
 
 pristine.addValidator(
-  rooms, () => {return validateRooms();},
+  rooms, () => {
+    return validateRooms();
+  },
   'Неверно указано кол-во комнат'
 );
 
@@ -43,8 +45,8 @@ pristine.addValidator(
     if (value === 'hotel') {
       return price.value >= 3000;
     }
-    if (value === 'house') 
-    {return price.value >= 5000;
+    if (value === 'house') {
+      return price.value >= 5000;
     }
     if (value === 'palace') {
       return price.value >= 10000;
