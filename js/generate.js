@@ -6,7 +6,7 @@ const cardElement = cardTemplate.cloneNode(true);
 export const map = document.querySelector('#map-canvas');
 const fragment = document.createDocumentFragment();
 
-const cardType = {
+export const cardType = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
