@@ -9,7 +9,7 @@ const pristine = new Pristine(form, {
 }, false);
 
 const validateTitle = function (value) {
-  return value.length >= 30 && value.length <= 100; 
+  return value.length >= 30 && value.length <= 100;
 };
 
 pristine.addValidator(
@@ -21,12 +21,12 @@ pristine.addValidator(
 const rooms = form.querySelector('#room_number');
 const guests = form.querySelector('#capacity');
 const validateRooms = function () {
-  return (rooms.value === guests.value) || (rooms.value === 100 && guests.value === 0)
-}
+  return (rooms.value === guests.value) || (rooms.value === 100 && guests.value === 0);
+};
 
 pristine.addValidator(
-  rooms, () => {
-    return validateRooms()
+  rooms, (value) => {
+    return validateRooms();
   },
   'Неверно указано кол-во комнат'
 );
@@ -44,14 +44,14 @@ const price = form.querySelector('#price');
 
 pristine.addValidator(
   type, (value) => {
-    if (value === "bungalow") return price.value >= 1000;
-    if (value === "flat") return price.value >= 1000;
-    if (value === "hotel") return price.value >= 3000;
-    if (value === "house") return price.value >= 5000;
-    if (value === "palace") return price.value >= 10000;
+    if (value === 'bungalow') {return price.value >= 1000};
+    if (value === 'flat') {return price.value >= 1000};
+    if (value === 'hotel') {return price.value >= 3000};
+    if (value === 'house') {return price.value >= 5000};
+    if (value === 'palace') {return price.value >= 10000};
   },
- 'Неверно указан тип'
-)
+  'Неверно указан тип'
+);
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
