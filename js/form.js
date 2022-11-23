@@ -25,32 +25,32 @@ const validateRooms = function () {
 };
 
 pristine.addValidator(
-  rooms, () => (validateRooms()),
-  'Неверно указано кол-во комнат'
+  guests, () => (validateRooms()),
+  'Неверно указано кол-во гостей'
 );
 
 const type = form.querySelector('#type');
 const price = form.querySelector('#price');
 
 pristine.addValidator(
-  type, (value) => {
-    if (value === 'bungalow') {
+  price, (value) => {
+    if (type.value === 'bungalow') {
       return price.value >= 1000;
     }
-    if (value === 'flat') {
+    if (type.value === 'flat') {
       return price.value >= 1000;
     }
-    if (value === 'hotel') {
+    if (type.value === 'hotel') {
       return price.value >= 3000;
     }
-    if (value === 'house') {
+    if (type.value === 'house') {
       return price.value >= 5000;
     }
-    if (value === 'palace') {
+    if (type.value === 'palace') {
       return price.value >= 10000;
     }
   },
-  'Неверно указан тип'
+  'Неверно указана цена'
 );
 
 form.addEventListener('submit', (evt) => {
