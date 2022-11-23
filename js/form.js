@@ -6,7 +6,7 @@ const pristine = new Pristine(form, {
   errorTextParent: 'ad-form__element',
   errorTextTag: 'span',
   errorTextClass: 'ad-form__element-error'
-});
+}, false);
 
 const validateTitle = function (value) {
   return value.length >= 30 && value.length <= 100; 
@@ -18,17 +18,42 @@ pristine.addValidator(
   'От 30 до 100 символов'
 );
 
-const typeHousing = form.querySelector('#type')
-const types = typeHousing.querySelectorAll('option')
+const rooms = form.querySelector('#room_number');
+const guests = form.querySelector('#capacity');
+const validateRooms = function () {
+  return (rooms.value === guests.value) || (rooms.value === 100 && guests.value === 0)
+}
 
+pristine.addValidator(
+  rooms, () => {
+    return validateRooms()
+  },
+  'Неверно указано кол-во комнат'
+);
 
-// import { cardType } from './generate.js'
-types.forEach((type) => {
+const types = {
+  bungalow: {type: 'Бунгало', minPrice: 0},
+  flat: {type: 'Квартира', minPrice: 1000},
+  hotel: {type: 'Отель', minPrice: 3000},
+  house: {type: 'Дом', minPrice: 5000},
+  palace: {type: 'Дворец', minPrice: 10000},
+}
 
-})
+const type = form.querySelector('#type');
+const price = form.querySelector('#price');
+
+pristine.addValidator(
+  type, (value) => {
+    if (value === "bungalow") return price.value >= 1000;
+    if (value === "flat") return price.value >= 1000;
+    if (value === "hotel") return price.value >= 3000;
+    if (value === "house") return price.value >= 5000;
+    if (value === "palace") return price.value >= 10000;
+  },
+ 'Неверно указан тип'
+)
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  console.log('Форма отправилась')
   pristine.validate();
 });
