@@ -21,10 +21,8 @@ pristine.addValidator(
 const rooms = form.querySelector('#room_number');
 const guests = form.querySelector('#capacity');
 const validateRooms = function () {
-  return ((rooms.value === guests.value) || (rooms.value === '100' && guests.value === '0')) || (rooms.value - guests.value === 1) || (rooms.value - guests.value === 2)
+  return ((rooms.value === guests.value) || (rooms.value === '100' && guests.value === '0')) || (rooms.value - guests.value === 1) || (rooms.value - guests.value === 2);
 };
-
-console.log(guests.value)
 
 pristine.addValidator(
   guests, () => (validateRooms()),
