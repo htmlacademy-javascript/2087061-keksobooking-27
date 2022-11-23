@@ -25,9 +25,7 @@ const validateRooms = function () {
 };
 
 pristine.addValidator(
-  rooms, () => {
-    return validateRooms();
-  },
+  rooms, () => (validateRooms()),
   'Неверно указано кол-во комнат'
 );
 
