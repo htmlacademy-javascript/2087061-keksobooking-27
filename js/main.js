@@ -1,8 +1,9 @@
 import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement} from './get-random-number.js';
 import {getAvatar, getFeatures, getPhotos} from './get-element.js';
 import {type, time} from './util.js';
-import {renderTemplate} from './generate.js';
+import './generate.js';
 import './form.js';
+import './map.js'
 
 export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
@@ -36,5 +37,3 @@ export const createAd = (id) => {
     },
   };
 };
-
-renderTemplate();
