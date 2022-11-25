@@ -35,13 +35,13 @@ export function getPhotos() {
 }
 
 export function getAvatar(id) {
-  let numberPhoto = id.toString();
+  const numberPhoto = id.toString();
   let linkAvatar = `img/avatars/user${'0' + numberPhoto}.png`;
   if (id === 0) {
-    linkAvatar = `img/avatars/user${numberPhoto}.png`
+    linkAvatar = `img/avatars/user${numberPhoto}.png`;
   }
   if (id >= 10) {
-    linkAvatar = `img/avatars/user${numberPhoto}.png`
+    linkAvatar = `img/avatars/user${numberPhoto}.png`;
   }
   return linkAvatar;
 }

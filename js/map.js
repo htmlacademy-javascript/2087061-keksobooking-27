@@ -1,9 +1,4 @@
-import { cardArray } from "./generate.js";
-
 export const map = L.map('map-canvas')
-  .on('load', () => {
-    console.log('Карта готова')
-  })
   .setView({
     lat: 35.6895,
     lng: 139.69171,
@@ -26,7 +21,7 @@ export const defaultMarkerIcon = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
-})
+});
 
 const marker = L.marker(
   {
@@ -39,9 +34,9 @@ const marker = L.marker(
   },
 );
 
-marker.addTo(map)
+marker.addTo(map);
 
-export const inputAddress = document.querySelector('#address')
+export const inputAddress = document.querySelector('#address');
 marker.on('moveend', (evt) => {
-  inputAddress.value = evt.target.getLatLng()
-})
+  inputAddress.value = evt.target.getLatLng();
+});
