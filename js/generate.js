@@ -3,8 +3,6 @@ import { features, photos } from './util.js';
 import { map, defaultMarkerIcon } from './map.js';
 
 export const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
-// export const map = document.querySelector('#map-canvas');
-const fragment = document.createDocumentFragment();
 
 export const cardType = {
   flat: 'Квартира',
@@ -47,12 +45,12 @@ export const renderTemplate = function () {
 
     L.marker(
       {
-      lat: card.location.lat,
-      lng: card.location.lng
+        lat: card.location.lat,
+        lng: card.location.lng
       },
       {
         defaultMarkerIcon
       }
-    ).addTo(map).bindPopup(cardElement)
+    ).addTo(map).bindPopup(cardElement);
   }
 };

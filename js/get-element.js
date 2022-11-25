@@ -36,7 +36,7 @@ export function getPhotos() {
 
 export function getAvatar(id) {
   const numberPhoto = id.toString();
-  let linkAvatar = `img/avatars/user${'0' + numberPhoto}.png`;
+  let linkAvatar = `img/avatars/user${0 + numberPhoto}.png`;
   if (id === 0) {
     linkAvatar = `img/avatars/user${numberPhoto}.png`;
   }
