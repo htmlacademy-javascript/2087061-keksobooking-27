@@ -30,7 +30,7 @@ pristine.addValidator(
 );
 
 const type = form.querySelector('#type');
-const price = form.querySelector('#price');
+export const price = form.querySelector('#price');
 
 pristine.addValidator(
   price, (value) => {
