@@ -4,7 +4,7 @@ import {type, time} from './util.js';
 import { renderTemplate } from './generate.js';
 import './form.js';
 import './map.js';
-import './sliderPrice.js';
+// import './sliderPrice.js';
 
 export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);

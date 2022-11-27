@@ -7,7 +7,7 @@ noUiSlider.create(sliderPrice, {
     min: 0,
     max: 100000,
   },
-  start: 50000,
+  start: 1000,
   step: 1,
   connect: 'lower',
 });
@@ -15,3 +15,4 @@ noUiSlider.create(sliderPrice, {
 sliderPrice.noUiSlider.on('update', () => {
   price.value = sliderPrice.noUiSlider.get();
 });
+

@@ -33,10 +33,10 @@ const marker = L.marker(
     icon: mainMarker
   },
 );
-
 marker.addTo(map);
 
 export const inputAddress = document.querySelector('#address');
 marker.on('moveend', (evt) => {
-  inputAddress.value = evt.target.getLatLng();
+  let coordinates = `${marker._latlng.lat.toFixed(5)} ${marker._latlng.lng.toFixed(5)}`
+  inputAddress.value = coordinates;
 });

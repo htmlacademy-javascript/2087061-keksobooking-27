@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кексобукинг</title> 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/nouislider@14.6.3/distribute/nouislider.min.css">
+  <link rel="stylesheet" href="./vendor/nouislider/nouislider.css">
 </head>
 <body>
 
@@ -96,7 +96,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">  
           <label class="ad-form__label" for="address">Адрес (координаты)</label>
-          <input id="address" name="address" type="text" disabled required value="LatLng(35.6895, 139.69171)">
+          <input id="address" name="address" type="text" disabled required value="35.6895, 139.69171">
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
@@ -110,7 +110,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000"
+          <input id="price" name="price" type="number" placeholder="1000"
             required
             min="0"
             max="100000"
