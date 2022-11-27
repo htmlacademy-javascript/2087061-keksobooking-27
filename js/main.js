@@ -4,6 +4,7 @@ import {type, time} from './util.js';
 import {renderTemplate} from './generate.js';
 import './inactiveToggle.js'
 
+
 export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
   const randomType = getRandomArrayElement(type);
