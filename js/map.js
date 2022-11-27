@@ -3,11 +3,9 @@ import { enabledForm, disabledForm } from './inactiveToggle.js';
 export const map = L.map('map-canvas')
   .on('load', () => {
     if (true) {
-      console.log('Карта инициализирована');
       window.onload = enabledForm;
     } else {
-      console.log('Карта неинициализирована');
-      window.onload = disabledForm
+      window.onload = disabledForm;
     }
   })
   .setView({
@@ -47,7 +45,7 @@ const marker = L.marker(
 marker.addTo(map);
 
 export const inputAddress = document.querySelector('#address');
-marker.on('moveend', (evt) => {
-  let coordinates = `${marker._latlng.lat.toFixed(5)} ${marker._latlng.lng.toFixed(5)}`
+marker.on('moveend', () => {
+  const coordinates = `${marker._latlng.lat.toFixed(5)} ${marker._latlng.lng.toFixed(5)}`;
   inputAddress.value = coordinates;
 });
