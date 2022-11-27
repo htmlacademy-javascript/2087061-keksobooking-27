@@ -1,4 +1,4 @@
-import { enabledForm, disabledForm } from "./inactiveToggle.js";
+import { enabledForm, disabledForm } from './inactiveToggle.js';
 
 export const map = L.map('map-canvas')
   .on('load', () => {

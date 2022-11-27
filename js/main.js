@@ -4,7 +4,7 @@ import {type, time} from './util.js';
 import { renderTemplate } from './generate.js';
 import './form.js';
 import './map.js';
-import './inactiveToggle.js'
+import './inactiveToggle.js';
 // import './sliderPrice.js';
 
 export const createAd = (id) => {
