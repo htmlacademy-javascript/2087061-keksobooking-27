@@ -2,7 +2,8 @@ import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement}
 import {getAvatar, getFeatures, getPhotos} from './get-element.js';
 import {type, time} from './util.js';
 import {renderTemplate} from './generate.js';
-import './form.js';
+import './inactiveToggle.js'
+
 
 export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
