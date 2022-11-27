@@ -1,4 +1,15 @@
+import { enabledForm, disabledForm } from "./inactiveToggle.js";
+
 export const map = L.map('map-canvas')
+  .on('load', () => {
+    if (true) {
+      console.log('Карта инициализирована');
+      window.onload = enabledForm;
+    } else {
+      console.log('Карта неинициализирована');
+      window.onload = disabledForm
+    }
+  })
   .setView({
     lat: 35.6895,
     lng: 139.69171,
