@@ -1,4 +1,4 @@
-const form = document.querySelector('.ad-form');
+export const form = document.querySelector('.ad-form');
 const pristine = new Pristine(form, {
   classTo: 'ad-form__element',
   errorClass: 'ad-form__element--invalid',
@@ -18,8 +18,8 @@ pristine.addValidator(
   'От 30 до 100 символов'
 );
 
-const rooms = form.querySelector('#room_number');
-const guests = form.querySelector('#capacity');
+export const rooms = form.querySelector('#room_number');
+export const guests = form.querySelector('#capacity');
 const validateRooms = function () {
   return ((rooms.value === guests.value) || (rooms.value === '100' && guests.value === '0')) || (rooms.value - guests.value === 1) || (rooms.value - guests.value === 2);
 };
@@ -30,7 +30,7 @@ pristine.addValidator(
 );
 
 const type = form.querySelector('#type');
-const price = form.querySelector('#price');
+export const price = form.querySelector('#price');
 
 pristine.addValidator(
   price, (value) => {

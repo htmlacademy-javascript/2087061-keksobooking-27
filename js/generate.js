@@ -1,10 +1,8 @@
 import { createAd } from './main.js';
 import { features, photos } from './util.js';
+import { map, defaultMarkerIcon } from './map.js';
 
 export const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
-const cardElement = cardTemplate.cloneNode(true);
-export const map = document.querySelector('#map-canvas');
-const fragment = document.createDocumentFragment();
 
 export const cardType = {
   flat: 'Квартира',
@@ -14,25 +12,26 @@ export const cardType = {
   hotel: 'Отель'
 };
 
-export const renderTemplate = function () {
-  const cardArray = [];
+export const cardArray = [];
 
-  for (let i = 0; i < 1; i++) {
+export const renderTemplate = function () {
+  for (let i = 0; i < 10; i++) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const card = createAd(i);
     cardArray.push(createAd(i));
-    cardElement.querySelector('.popup__title').textContent = cardArray[i].offer.title;
-    cardElement.querySelector('.popup__text--address').textContent = cardArray[i].offer.address;
-    cardElement.querySelector('.popup__text--price').textContent = `${cardArray[i].offer.price} ₽/ночь`;
-    cardElement.querySelector('.popup__type').textContent = cardType[cardArray[i].offer.type];
-    cardElement.querySelector('.popup__text--capacity').textContent = `${cardArray[i].offer.rooms} комнаты для ${cardArray[i].offer.guests} гостей`;
-    cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${cardArray[i].offer.checkin}, выезд до ${cardArray[i].offer.checkout}`;
+    cardElement.querySelector('.popup__title').textContent = card.offer.title;
+    cardElement.querySelector('.popup__text--address').textContent = card.offer.address;
+    cardElement.querySelector('.popup__text--price').textContent = `${card.offer.price} ₽/ночь`;
+    cardElement.querySelector('.popup__type').textContent = cardType[card.offer.type];
+    cardElement.querySelector('.popup__text--capacity').textContent = `${card.offer.rooms} комнаты для ${card.offer.guests} гостей`;
+    cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${card.offer.checkin}, выезд до ${card.offer.checkout}`;
     features.forEach((feature) => {
       const featureListItem = cardElement.querySelector(`.popup__feature--${feature}`);
-      if (!cardArray[i].offer.features.includes(feature)) {
+      if (!card.offer.features.includes(feature)) {
         featureListItem.style.display = 'none';
       }
     });
-
-    cardElement.querySelector('.popup__description').textContent = cardArray[i].offer.description;
+    cardElement.querySelector('.popup__description').textContent = card.offer.description;
     const cardPhotos = cardElement.querySelector('.popup__photos');
     for (let k = 0; k < photos.length; k++) {
       const cardPhotoItem = document.createElement('img');
@@ -43,7 +42,15 @@ export const renderTemplate = function () {
       cardPhotos.appendChild(cardPhotoItem);
     }
     cardElement.querySelector('.popup__avatar').src = cardArray[i].author.avatar;
-    fragment.appendChild(cardElement);
+
+    L.marker(
+      {
+        lat: card.location.lat,
+        lng: card.location.lng
+      },
+      {
+        defaultMarkerIcon
+      }
+    ).addTo(map).bindPopup(cardElement);
   }
-  map.appendChild(fragment);
 };

@@ -5,7 +5,9 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <title>Кексобукинг</title>
+  <title>Кексобукинг</title> 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  <link rel="stylesheet" href="./vendor/nouislider/nouislider.css">
 </head>
 <body>
 
@@ -19,7 +21,7 @@
     <section class="map">
 
       <!-- Блок для вставки карты -->
-      <div class="map__canvas" id="map-canvas"></div>
+      <div class="map__canvas" id="map-canvas" style="height: 480px;"></div>
 
       <!-- Фильтрация объявлений -->
       <div class="map__filters-container">
@@ -94,7 +96,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">  
           <label class="ad-form__label" for="address">Адрес (координаты)</label>
-          <input id="address" name="address" type="text" disabled>
+          <input id="address" name="address" type="text" disabled required value="35.6895, 139.69171">
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
@@ -108,7 +110,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000"
+          <input id="price" name="price" type="number" placeholder="1000"
             required
             min="0"
             max="100000"
@@ -149,7 +151,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide features">
           <legend>Удобства: Wi-Fi, кухня, парковка, стиралка, лифт, кондиционер</legend>
-          <input class="features__checkbox visually-hidden" type="checkbox" name="feature" value="wifi" id="feature-wifi">
+          <input class="features__checkbox visually-hidden" checked type="checkbox" name="feature" value="wifi" id="feature-wifi">
           <label class="features__label features__label--wifi" for="feature-wifi">Wi-Fi</label>
           <input class="features__checkbox visually-hidden" type="checkbox" name="feature" value="dishwasher" id="feature-dishwasher">
           <label class="features__label features__label--dishwasher" for="feature-dishwasher">Посудомоечная машина</label>
@@ -237,6 +239,8 @@
   </template>
 
 </body>
+<script src="./vendor/nouislider/nouislider.js"></script>
+<script src="./vendor/leaflet/leaflet.js"></script>
 <script src="./vendor/pristine/pristine.min.js"></script>
 <script src="./js/main.js" type="module"></script>
 </html>
