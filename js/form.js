@@ -1,4 +1,7 @@
+import { sendData } from "./api.js";
+
 export const form = document.querySelector('.ad-form');
+
 const pristine = new Pristine(form, {
   classTo: 'ad-form__element',
   errorClass: 'ad-form__element--invalid',
@@ -53,7 +56,47 @@ pristine.addValidator(
   'Неверно указана цена'
 );
 
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
+const timein = form.querySelector('#timein')
+const timeout = form.querySelector('#timeout')
+
+timein.addEventListener('change', () => {
+  timeout.value = timein.value;
 });
+
+timeout.addEventListener('change', () => {
+  timein.value = timeout.value
+});
+
+const submitButton = form.querySelector('.ad-form__submit');
+
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Сохраняю...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Сохранить';
+};
+
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const isValid = pristine.validate();
+    if (isValid) {
+      blockSubmitButton();
+      sendData(
+        () => {
+          onSuccess(),
+          unblockSubmitButton()
+        },
+        () => {
+          showAlert('Не удалось отправить форму. Попробуйте ещё раз'),
+          unblockSubmitButton()
+        },
+        new FormData(evt.target),
+      );
+    }
+  });
+};

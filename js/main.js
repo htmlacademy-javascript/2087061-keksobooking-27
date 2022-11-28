@@ -5,7 +5,8 @@ import { renderTemplate } from './generate.js';
 import './form.js';
 import './map.js';
 import './inactiveToggle.js';
-// import './sliderPrice.js';
+import './sliderPrice.js';
+import { getData } from './api.js';
 
 export const createAd = (id) => {
   const randomPrice = getRandomPositiveInteger(0, 20000);
@@ -40,4 +41,6 @@ export const createAd = (id) => {
   };
 };
 
-renderTemplate();
+getData((createAd) => {
+  renderTemplate(createAd)
+});
