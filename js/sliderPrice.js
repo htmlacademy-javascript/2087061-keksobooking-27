@@ -1,4 +1,4 @@
-import { form, price } from './form.js';
+import { form } from './form.js';
 
 const sliderPrice = form.querySelector('.ad-form__slider');
 
@@ -15,4 +15,3 @@ noUiSlider.create(sliderPrice, {
 sliderPrice.noUiSlider.on('update', () => {
   price.value = sliderPrice.noUiSlider.get();
 });
-
